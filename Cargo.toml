@@ -11,12 +11,12 @@ license = "MIT OR Apache-2.0"
 repository = "https://github.com/daschl/ssd1327"
 
 [dependencies]
-display-interface = "0.4"
-embedded-graphics-core = "0.3"
-embedded-hal = "0.2"
+display-interface = "0.5"
+embedded-graphics-core = "0.4"
+embedded-hal = "1.0.0"
 
 [dev-dependencies]
-rppal = { version = "0.12", features = [ "hal" ] }
-embedded-graphics = "0.7.1"
-display-interface-spi = "0.4.0"
-linux-embedded-hal = "0.3.0"
+rppal = { version = "0.19", features = [ "hal" ] }
+embedded-graphics = "0.8.1"
+display-interface-spi = "0.5.0"
+linux-embedded-hal = "0.4.0"

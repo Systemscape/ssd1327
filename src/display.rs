@@ -10,8 +10,9 @@ use embedded_graphics_core::{
     pixelcolor::{Gray4, GrayColor},
     Pixel,
 };
-use embedded_hal::blocking::delay::DelayMs;
-use embedded_hal::digital::v2::OutputPin;
+
+use embedded_hal::delay::DelayNs;
+use embedded_hal::digital::OutputPin;
 
 /// Represents the SSD1327 Display.
 ///
@@ -50,7 +51,7 @@ where
     ) -> Result<(), DisplayError>
     where
         RST: OutputPin,
-        DELAY: DelayMs<u8>,
+        DELAY: DelayNs,
     {
         rst.set_high().map_err(|_| DisplayError::BusWriteError)?;
         delay.delay_ms(100);
@@ -101,7 +102,7 @@ where
 
     /// Flushes the display, and makes the output visible on the screen.
     pub fn flush(&mut self) -> Result<(), DisplayError> {
-        self.display.send_data(U8(&self.buffer.as_mut()))
+        self.display.send_data(U8(self.buffer.as_mut()))
     }
 }
 
